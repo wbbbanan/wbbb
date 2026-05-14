@@ -1,0 +1,191 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+  background-color: var(--bg-base);
+
+  /* ── Base — Cursor-style warm grays ────────────────────────── */
+  --bg-base: #1e1e1e;
+  --surface-base: #1e1e1e;
+  --surface-sidebar: #252526;
+  --surface-elevated: #2d2d2d;
+  --surface-overlay: #333333;
+  --surface-input: #3c3c3c;
+
+  /* ── Borders — barely visible ──────────────────────────────── */
+  --border-subtle: #333333;
+  --border-muted: #3e3e42;
+
+  /* ── Text — warm, not harsh white ──────────────────────────── */
+  --text-primary: #d4d4d4;
+  --text-secondary: #a0a0a0;
+  --text-muted: #6e6e6e;
+
+  /* ── States — grayscale, no neon ───────────────────────────── */
+  --success: #6e6e6e;
+  --success-subtle: rgba(255,255,255,0.04);
+  --warning: #808080;
+  --warning-subtle: rgba(255,255,255,0.04);
+  --error: #555555;
+  --error-subtle: rgba(255,255,255,0.04);
+
+  /* ── Accent — barely there, only for links ─────────────────── */
+  --link: #569cd6;
+
+  /* ── Scrollbar ─────────────────────────────────────────────── */
+  --scroll-track: transparent;
+  --scroll-thumb: #424242;
+  --scroll-thumb-hover: #4f4f4f;
+
+  /* ── Backward compat aliases ───────────────────────────────── */
+  --surface-panel: var(--surface-base);
+  --surface-card: var(--surface-elevated);
+  --accent: var(--text-secondary);
+  --accent-subtle: rgba(255,255,255,0.04);
+  --accent-hover: rgba(255,255,255,0.08);
+
+  /* ── Misc ──────────────────────────────────────────────────── */
+  --selection-bg: rgba(255,255,255,0.1);
+  --caret-color: #d4d4d4;
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+  background-color: var(--bg-base);
+
+  --bg-base: #f3f3f3;
+  --surface-base: #f3f3f3;
+  --surface-sidebar: #ececec;
+  --surface-elevated: #e8e8e8;
+  --surface-overlay: #e0e0e0;
+  --surface-input: #ffffff;
+
+  --border-subtle: #e0e0e0;
+  --border-muted: #d0d0d0;
+
+  --text-primary: #2c2c2c;
+  --text-secondary: #5a5a5a;
+  --text-muted: #888888;
+
+  --success: #888888;
+  --success-subtle: rgba(0,0,0,0.03);
+  --warning-subtle: rgba(0,0,0,0.03);
+  --error-subtle: rgba(0,0,0,0.03);
+
+  --link: #0078d4;
+
+  --scroll-track: transparent;
+  --scroll-thumb: #c0c0c0;
+  --scroll-thumb-hover: #a0a0a0;
+
+  --surface-panel: var(--surface-base);
+  --surface-card: var(--surface-elevated);
+  --accent: var(--text-secondary);
+  --accent-subtle: rgba(0,0,0,0.03);
+  --accent-hover: rgba(0,0,0,0.06);
+
+  --selection-bg: rgba(0,0,0,0.08);
+  --caret-color: #2c2c2c;
+}
+
+html, body, #root {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  overflow: hidden;
+  background: var(--bg-base);
+  color: var(--text-primary);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button, textarea {
+  font: inherit;
+}
+
+input, textarea {
+  caret-color: var(--caret-color);
+}
+
+::selection {
+  background: var(--selection-bg);
+  color: inherit;
+}
+
+/* ── Scrollbar ──────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scroll-track);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: var(--scroll-thumb);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scroll-thumb-hover);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+/* ── Markdown body ──────────────────────────────────────────── */
+.markdown-body pre { margin: 0; }
+.markdown-body p:last-child { margin-bottom: 0; }
+
+/* ── Line clamp ─────────────────────────────────────────────── */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ── ReactFlow overrides ────────────────────────────────────── */
+.react-flow__node-status {
+  border-radius: 8px;
+}
+.react-flow__controls button {
+  background: var(--surface-elevated) !important;
+  color: var(--text-primary) !important;
+  border-bottom: 1px solid var(--border-subtle) !important;
+}
+.react-flow__controls button:hover {
+  background: var(--surface-overlay) !important;
+}
+.react-flow__minimap {
+  background: var(--surface-elevated) !important;
+  border: 1px solid var(--border-subtle) !important;
+}
+.react-flow__attribution {
+  display: none;
+}
+
+/* ── Animations ─────────────────────────────────────────────── */
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up {
+  animation: fade-in-up 150ms ease-out forwards;
+}

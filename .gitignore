@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+out/
+.webpack/
+forge-out*/
+tmp-*/
+.tmp-asar-check/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+Thumbs.db
+Desktop.ini
+
+# Debug logs
+npm-debug.log*
+
+# Environment
+.env
+.env.*
+.env.local
+!.env.example
+
+# Auto-launch build marker
+.last-package-ts
